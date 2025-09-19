@@ -1,0 +1,9 @@
+<Project>
+	<PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        
+        <AvaloniaVersion>11.3.6</AvaloniaVersion>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	</PropertyGroup>
+</Project>
