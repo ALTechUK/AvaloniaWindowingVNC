@@ -1,13 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
 	<AvaloniaAccessUnstablePrivateApis>true</AvaloniaAccessUnstablePrivateApis>
+    <Avalonia_I_Want_To_Use_Private_Apis_In_Nuget_Package_And_Promise_To_Pin_The_Exact_Avalonia_Version_In_Package_Dependency>true</Avalonia_I_Want_To_Use_Private_Apis_In_Nuget_Package_And_Promise_To_Pin_The_Exact_Avalonia_Version_In_Package_Dependency>
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <IsPackable>true</IsPackable>
+    <PackageId>ALTechUK.AvaloniaWindowingVNC</PackageId>
+    <Description>A VNC implementation for Avalonia that allows opening child windows</Description>
+    <RepositoryUrl>https://github.com/ALTechUK/AvaloniaWindowingVNC</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+      
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <!-- 
+    if github nuget repo ever supports symbol packages then use this
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    -->
+    <DebugType>embedded</DebugType>
+    <EmbedAllSources>true</EmbedAllSources>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia" Version="[$(AvaloniaVersion)]" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="[$(AvaloniaVersion)]" />
     <PackageReference Include="Quamotion.RemoteViewing" Version="1.1.179" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 </Project>

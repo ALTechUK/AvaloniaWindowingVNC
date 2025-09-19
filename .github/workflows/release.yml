@@ -1,0 +1,33 @@
+on:
+  push:
+    tags:
+    - "v[0-9]+.[0-9]+.[0-9]+"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Verify commit exists in origin/master
+      run: |
+        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+        git branch --remote --contains | grep origin/master
+        
+    - name: Set VERSION variable from tag
+      run: echo "VERSION=$($env:GITHUB_REF.replace('refs/tags/v', ''))" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+    
+    - name: Restore packages
+      run: dotnet restore
+      
+    - name: build
+      run: dotnet build --configuration Release /p:Version=${{ env.VERSION }} /p:ContinuousIntegrationBuild=true
+      
+    - name: pack
+      run: dotnet pack --configuration Release /p:Version=${{ env.VERSION }} --no-build  -o packages /p:ContinuousIntegrationBuild=true
+
+    - name: Push Packages
+      run: dotnet nuget push packages/**.nupkg --source https://nuget.pkg.github.com/ALTechUK/index.json --api-key ${{ env.GITHUB_TOKEN }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
