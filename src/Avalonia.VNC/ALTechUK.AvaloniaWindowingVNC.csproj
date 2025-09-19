@@ -25,7 +25,7 @@
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="[$(AvaloniaVersion)]" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="[$(AvaloniaVersion)]" />
-    <PackageReference Include="Quamotion.RemoteViewing" Version="1.1.179" />
+    <PackageReference Include="Quamotion.RemoteViewing" Version="1.1.211" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 </Project>

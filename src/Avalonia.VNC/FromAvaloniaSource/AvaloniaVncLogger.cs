@@ -1,12 +1,12 @@
 ﻿using Avalonia.Logging;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions.Internal;
+using Microsoft.Extensions.Logging.Abstractions;
 using System;
 
 namespace ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource;
 internal class AvaloniaVncLogger : ILogger
 {
-	public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+	public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
 	{
 		Logger.TryGet(ToLogEventLevel(logLevel), LogArea.VncPlatform)
 			?.Log(state, formatter(state, exception));
@@ -19,7 +19,7 @@ internal class AvaloniaVncLogger : ILogger
 
 	public IDisposable BeginScope<TState>(TState state)
 	{
-		return NullScope.Instance;
+		return NullLogger.Instance.BeginScope(state);
 	}
 
 	private static LogEventLevel ToLogEventLevel(LogLevel logLevel)
