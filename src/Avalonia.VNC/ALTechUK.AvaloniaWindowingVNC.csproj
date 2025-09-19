@@ -6,6 +6,7 @@
 
     <IsPackable>true</IsPackable>
     <PackageId>ALTechUK.AvaloniaWindowingVNC</PackageId>
+    <PackageIcon>Icon.png</PackageIcon>
     <Description>A VNC implementation for Avalonia that allows opening child windows</Description>
     <RepositoryUrl>https://github.com/ALTechUK/AvaloniaWindowingVNC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -21,6 +22,9 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)/../../build/Assets/Icon.png" Pack="true" PackagePath="/" Visible="false"/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="[$(AvaloniaVersion)]" />
