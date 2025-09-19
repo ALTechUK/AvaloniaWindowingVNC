@@ -5,10 +5,10 @@
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
     <IsPackable>true</IsPackable>
-    <PackageId>ALTechUK.AvaloniaWindowingVNC</PackageId>
+    <PackageId>ALTechUK.Avalonia.WindowingVNC</PackageId>
     <PackageIcon>Icon.png</PackageIcon>
     <Description>A VNC implementation for Avalonia that allows opening child windows</Description>
-    <RepositoryUrl>https://github.com/ALTechUK/AvaloniaWindowingVNC</RepositoryUrl>
+    <RepositoryUrl>https://github.com/ALTechUK/Avalonia.WindowingVNC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
       
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
