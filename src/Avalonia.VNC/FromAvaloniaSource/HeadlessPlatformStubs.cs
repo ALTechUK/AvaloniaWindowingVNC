@@ -350,7 +350,7 @@ namespace ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource
 
         private class PlatformScreenStub : PlatformScreen
         {
-            public PlatformScreenStub(int key) : base(new PlatformHandle(key, nameof(HeadlessScreensStub)))
+            public PlatformScreenStub(int key) : base(new PlatformHandle((nint)key, nameof(HeadlessScreensStub)))
             {
                 Scaling = 1;
                 Bounds = WorkingArea = new PixelRect(0, 0, 1920, 1280);

@@ -1,8 +1,8 @@
 <Project>
 	<PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFrameworks>net6.0;net9.0;netstandard2.0</TargetFrameworks>
         <Nullable>enable</Nullable>
-        
+        <LangVersion>13</LangVersion>
         <AvaloniaVersion>11.3.6</AvaloniaVersion>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 	</PropertyGroup>

@@ -4,13 +4,16 @@ using Avalonia;
 using RemoteViewing.Vnc;
 using RemoteViewing.Vnc.Server;
 using ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource;
-using System.Threading;
 
 namespace ALTechUK.AvaloniaWindowingVNC;
 
 internal class CustomHeadlessVncFramebufferSource : HeadlessVncFramebufferSource, IVncFramebufferSource
 {
-	readonly Lock _lock = new();
+#if NET9_0_OR_GREATER
+	readonly System.Threading.Lock _lock = new();
+#else
+	readonly object _lock = new();
+#endif
 	readonly string _frameBufferName;
 
 	public CustomHeadlessVncFramebufferSource(VncServerSession session, Window window, string framebufferName) 

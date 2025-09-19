@@ -117,7 +117,7 @@ namespace ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource
 
         public Action? Deactivated { get; set; }
         public Action? Activated { get; set; }
-        public IPlatformHandle Handle { get; } = new PlatformHandle(nint.Zero, "STUB");
+        public IPlatformHandle Handle { get; } = new PlatformHandle(IntPtr.Zero, "STUB");
         public void Resize(Size clientSize, WindowResizeReason reason)
         {
             if (ClientSize == clientSize)

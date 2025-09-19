@@ -116,7 +116,12 @@ internal class WindowingHeadlessVncConnectionManager
 
 	internal void WindowClosed()
 	{
-        _displayWindows.TryPop(out _currentWindow);
+#if NETSTANDARD 
+		if (_displayWindows.Count > 0)
+			_displayWindows.Pop();
+#else
+		_displayWindows.TryPop(out _currentWindow);
+#endif
 		foreach (CustomHeadlessVncFramebufferSource frameBuffer in _vncFrameBuffers.Values)
 			frameBuffer.Window = DisplayWindow;
 	}
