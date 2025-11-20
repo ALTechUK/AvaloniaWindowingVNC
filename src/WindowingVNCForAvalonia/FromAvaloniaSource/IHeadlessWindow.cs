@@ -3,7 +3,7 @@ using Avalonia.Input;
 using Avalonia.Input.Raw;
 using Avalonia.Media.Imaging;
 
-namespace ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource
+namespace ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource
 {
     internal interface IHeadlessWindowEx
     {

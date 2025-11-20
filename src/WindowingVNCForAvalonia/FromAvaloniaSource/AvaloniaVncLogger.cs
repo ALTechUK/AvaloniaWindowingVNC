@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using System;
 
-namespace ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource;
+namespace ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource;
 internal class AvaloniaVncLogger : ILogger
 {
 	public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)

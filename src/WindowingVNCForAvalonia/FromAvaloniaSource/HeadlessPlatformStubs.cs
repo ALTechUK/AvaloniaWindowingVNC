@@ -14,57 +14,49 @@ using Avalonia.Media.TextFormatting;
 using Avalonia.Media.TextFormatting.Unicode;
 using Avalonia.Platform;
 
-namespace ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource
+namespace ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource
 {
-    internal class HeadlessClipboardStub : IClipboard
-    {
-        private IDataObject? _data;
+	internal sealed class HeadlessClipboardImplStub : IOwnedClipboardImpl
+	{
+		private IAsyncDataTransfer? _data;
 
-        public Task<string?> GetTextAsync()
-        {
-            return Task.FromResult(_data?.GetText());
-        }
+		public Task<IAsyncDataTransfer?> TryGetDataAsync()
+			// Return an instance that won't be disposed (we're keeping the ownership).
+			=> Task.FromResult<IAsyncDataTransfer?>(_data is null ? null : new NonDisposingDataTransfer(_data));
 
-        public Task SetTextAsync(string? text)
-        {
-            var data = new DataObject();
-            if (text != null)
-                data.Set(DataFormats.Text, text);
-            _data = data;
-            return Task.CompletedTask;
-        }
+		public Task SetDataAsync(IAsyncDataTransfer dataTransfer)
+		{
+			_data = dataTransfer;
+			return Task.CompletedTask;
+		}
 
-        public Task ClearAsync()
-        {
-            _data = null;
-            return Task.CompletedTask;
-        }
+		public Task ClearAsync()
+		{
+			_data?.Dispose();
+			_data = null;
+			return Task.CompletedTask;
+		}
 
-        public Task SetDataObjectAsync(IDataObject data)
-        {
-            _data = data;
-            return Task.CompletedTask;
-        }
+		public Task<bool> IsCurrentOwnerAsync()
+			=> Task.FromResult(_data is not null);
 
-        public Task<string[]> GetFormatsAsync()
-        {
-            return Task.FromResult(_data?.GetDataFormats().ToArray() ?? []);
-        }
+		private sealed class NonDisposingDataTransfer(IAsyncDataTransfer wrapped) : IAsyncDataTransfer
+		{
+			private readonly IAsyncDataTransfer _wrapped = wrapped;
 
-        public Task<object?> GetDataAsync(string format)
-        {
-            return Task.FromResult(_data?.Get(format));
-        }
+			public IReadOnlyList<DataFormat> Formats
+				=> _wrapped.Formats;
 
+			public IReadOnlyList<IAsyncDataTransferItem> Items
+				=> _wrapped.Items;
 
-        public Task<IDataObject?> TryGetInProcessDataObjectAsync() => Task.FromResult(_data);
+			void IDisposable.Dispose()
+			{
+			}
+		}
+	}
 
-        /// <inheritdoc />
-        public Task FlushAsync() =>
-            Task.CompletedTask;
-    }
-
-    internal class HeadlessCursorFactoryStub : ICursorFactory
+	internal class HeadlessCursorFactoryStub : ICursorFactory
     {
         public ICursorImpl GetCursor(StandardCursorType cursorType) => new CursorStub();
         public ICursorImpl CreateCursor(IBitmapImpl cursor, PixelPoint hotSpot) => new CursorStub();

@@ -7,7 +7,7 @@ using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Avalonia.Threading;
 
-namespace ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource;
+namespace ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource;
 
 /// <summary>
 /// Set of extension methods to simplify usage of Avalonia.Headless platform.

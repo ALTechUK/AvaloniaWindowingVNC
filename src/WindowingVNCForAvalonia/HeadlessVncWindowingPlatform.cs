@@ -1,7 +1,7 @@
 ﻿using Avalonia.Platform;
 using System;
 
-namespace ALTechUK.AvaloniaWindowingVNC;
+namespace ALTechUK.WindowingVNCForAvalonia;
 
 internal class HeadlessVncWindowingPlatform(PixelFormat frameBufferFormat, WindowingHeadlessVncConnectionManager connectionManager) 
 	: IWindowingPlatform

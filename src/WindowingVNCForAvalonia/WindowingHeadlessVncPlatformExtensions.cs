@@ -1,5 +1,5 @@
-﻿using ALTechUK.AvaloniaWindowingVNC;
-using ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource;
+﻿using ALTechUK.WindowingVNCForAvalonia;
+using ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource;
 using Avalonia.Controls;
 using Avalonia.Platform;
 

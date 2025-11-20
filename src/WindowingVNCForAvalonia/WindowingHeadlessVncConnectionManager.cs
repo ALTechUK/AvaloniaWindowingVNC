@@ -1,4 +1,4 @@
-﻿using ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource;
+﻿using ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -13,7 +13,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 
-namespace ALTechUK.AvaloniaWindowingVNC;
+namespace ALTechUK.WindowingVNCForAvalonia;
 
 internal class WindowingHeadlessVncConnectionManager
 {

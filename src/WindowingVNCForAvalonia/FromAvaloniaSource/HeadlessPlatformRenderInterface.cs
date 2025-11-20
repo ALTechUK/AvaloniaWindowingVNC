@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Avalonia.Media;
 using Avalonia.Platform;
@@ -9,8 +8,9 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.IO;
+using System.Diagnostics.CodeAnalysis;
 
-namespace ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource
+namespace ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource
 {
     internal class HeadlessPlatformRenderInterface : IPlatformRenderInterface, IPlatformRenderInterfaceContext
     {

@@ -14,5 +14,6 @@
     
   <ItemGroup>
     <ProjectReference Include="..\..\src\Avalonia.VNC\ALTechUK.Avalonia.WindowingVNC.csproj" />
+    <ProjectReference Include="..\..\src\WindowingVNCForAvalonia\ALTechUK.WindowingVNCForAvalonia.csproj" />
   </ItemGroup>
 </Project>

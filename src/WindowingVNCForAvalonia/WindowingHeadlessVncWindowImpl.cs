@@ -1,11 +1,11 @@
-﻿using ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource;
+﻿using ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Platform;
 using System;
 
-namespace ALTechUK.AvaloniaWindowingVNC;
+namespace ALTechUK.WindowingVNCForAvalonia;
 internal sealed class WindowingHeadlessVncWindowImpl : HeadlessWindowImpl, IDisposable
 {
 	readonly WindowingHeadlessVncConnectionManager _connectionManager;

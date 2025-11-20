@@ -3,9 +3,9 @@ using System;
 using Avalonia;
 using RemoteViewing.Vnc;
 using RemoteViewing.Vnc.Server;
-using ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource;
+using ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource;
 
-namespace ALTechUK.AvaloniaWindowingVNC;
+namespace ALTechUK.WindowingVNCForAvalonia;
 
 internal class CustomHeadlessVncFramebufferSource : HeadlessVncFramebufferSource, IVncFramebufferSource
 {

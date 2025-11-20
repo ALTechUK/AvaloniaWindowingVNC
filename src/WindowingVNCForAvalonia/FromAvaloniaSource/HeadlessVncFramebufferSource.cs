@@ -7,7 +7,7 @@ using Avalonia.Threading;
 using RemoteViewing.Vnc;
 using RemoteViewing.Vnc.Server;
 
-namespace ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource
+namespace ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource
 {
     public class HeadlessVncFramebufferSource : IVncFramebufferSource
     {

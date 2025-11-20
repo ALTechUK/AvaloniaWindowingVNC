@@ -11,7 +11,7 @@ using Avalonia;
 using System;
 using System.Collections.Generic;
 
-namespace ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource;
+namespace ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource;
 
 public static class AvaloniaHeadlessPlatform
 {
@@ -70,19 +70,23 @@ public static class AvaloniaHeadlessPlatform
         
     internal static void Initialize(AvaloniaHeadlessPlatformOptions opts)
     {
-        AvaloniaLocator.CurrentMutable
-            .Bind<IDispatcherImpl>().ToConstant(new ManagedDispatcherImpl(null))
-            .Bind<IClipboard>().ToSingleton<HeadlessClipboardStub>()
-            .Bind<ICursorFactory>().ToSingleton<HeadlessCursorFactoryStub>()
-            .Bind<IPlatformSettings>().ToSingleton<DefaultPlatformSettings>()
-            .Bind<IPlatformIconLoader>().ToSingleton<HeadlessIconLoaderStub>()
-            .Bind<IKeyboardDevice>().ToConstant(new KeyboardDevice())
-            .Bind<IRenderTimer>().ToConstant(new RenderTimer(60))
-            .Bind<IWindowingPlatform>().ToConstant(new HeadlessWindowingPlatform(opts.FrameBufferFormat))
-            .Bind<PlatformHotkeyConfiguration>().ToSingleton<PlatformHotkeyConfiguration>()
-            .Bind<KeyGestureFormatInfo>().ToConstant(new KeyGestureFormatInfo(new Dictionary<Key, string>() { }));
-        Compositor = new Compositor( null);
-    }
+        var clipboardImpl = new HeadlessClipboardImplStub();
+		var clipboard = new Clipboard(clipboardImpl);
+
+		AvaloniaLocator.CurrentMutable
+			.Bind<IDispatcherImpl>().ToConstant(new ManagedDispatcherImpl(null))
+			.Bind<IClipboardImpl>().ToConstant(clipboardImpl)
+			.Bind<IClipboard>().ToConstant(clipboard)
+			.Bind<ICursorFactory>().ToSingleton<HeadlessCursorFactoryStub>()
+			.Bind<IPlatformSettings>().ToSingleton<DefaultPlatformSettings>()
+			.Bind<IPlatformIconLoader>().ToSingleton<HeadlessIconLoaderStub>()
+			.Bind<IKeyboardDevice>().ToConstant(new KeyboardDevice())
+			.Bind<IRenderTimer>().ToConstant(new RenderTimer(60))
+			.Bind<IWindowingPlatform>().ToConstant(new HeadlessWindowingPlatform(opts.FrameBufferFormat))
+			.Bind<PlatformHotkeyConfiguration>().ToSingleton<PlatformHotkeyConfiguration>()
+			.Bind<KeyGestureFormatInfo>().ToConstant(new KeyGestureFormatInfo(new Dictionary<Key, string>() { }));
+		Compositor = new Compositor(null);
+	}
 
     /// <summary>
     /// Forces renderer to process a rendering timer tick.

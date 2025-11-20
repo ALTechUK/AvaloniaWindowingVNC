@@ -3,7 +3,7 @@
         <TargetFrameworks>net6.0;net9.0;netstandard2.0</TargetFrameworks>
         <Nullable>enable</Nullable>
         <LangVersion>13</LangVersion>
-        <AvaloniaVersion>11.3.6</AvaloniaVersion>
+        <AvaloniaVersion>11.3.9</AvaloniaVersion>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 	</PropertyGroup>
 </Project>

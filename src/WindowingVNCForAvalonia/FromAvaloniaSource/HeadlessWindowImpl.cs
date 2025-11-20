@@ -13,7 +13,7 @@ using Avalonia.Platform;
 using Avalonia.Rendering.Composition;
 using Avalonia.Threading;
 
-namespace ALTechUK.AvaloniaWindowingVNC.FromAvaloniaSource
+namespace ALTechUK.WindowingVNCForAvalonia.FromAvaloniaSource
 {
     internal class HeadlessWindowImpl : IWindowImpl, IPopupImpl, IFramebufferPlatformSurface, IHeadlessWindowEx
     {
